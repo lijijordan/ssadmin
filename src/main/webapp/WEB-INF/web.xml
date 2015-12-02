@@ -25,31 +25,52 @@
 		<async-supported>true</async-supported>
 	</servlet>
 
+
+	<!-- Captcha start -->
+	<servlet>
+        <servlet-name>StickyCaptcha</servlet-name>
+        <servlet-class>nl.captcha.servlet.StickyCaptchaServlet</servlet-class>
+        <init-param>
+            <param-name>width</param-name>
+            <param-value>250</param-value>
+        </init-param>
+        <init-param>
+            <param-name>height</param-name>
+            <param-value>75</param-value>
+        </init-param>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>AudioCaptcha</servlet-name>
+        <servlet-class>nl.captcha.servlet.AudioCaptchaServlet</servlet-class>
+    </servlet>
+
+     <servlet-mapping>
+        <servlet-name>AudioCaptcha</servlet-name>
+        <url-pattern>/audio.wav</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StickyCaptcha</servlet-name>
+        <url-pattern>/stickyImg</url-pattern>
+    </servlet-mapping>
+    <!-- Captcha end -->
+
 	<servlet-mapping>
 		<servlet-name>dispatcherServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-	
+
+
 
 	<!-- 认证和授权过滤 -->
 	<!-- 开发时 屏蔽权限过滤 -->
-	<!-- <filter>
-		<filter-name>securityFilter</filter-name>
-		<filter-class>com.lqsd.filter.SecurityFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>securityFilter</filter-name>
-		<url-pattern>/admin</url-pattern>
-		<url-pattern>/article/*</url-pattern>
-		<url-pattern>/comment/*</url-pattern>
-		<url-pattern>/controller/*</url-pattern>
-		<url-pattern>/home/*</url-pattern>
-		<url-pattern>/nurse/*</url-pattern>
-		<url-pattern>/order/*</url-pattern>
-		<url-pattern>/site/*</url-pattern>
-		<url-pattern>/staff/*</url-pattern>
-	</filter-mapping> -->
+	<!-- <filter> <filter-name>securityFilter</filter-name> <filter-class>com.lqsd.filter.SecurityFilter</filter-class> 
+		</filter> <filter-mapping> <filter-name>securityFilter</filter-name> <url-pattern>/admin</url-pattern> 
+		<url-pattern>/article/*</url-pattern> <url-pattern>/comment/*</url-pattern> 
+		<url-pattern>/controller/*</url-pattern> <url-pattern>/home/*</url-pattern> 
+		<url-pattern>/nurse/*</url-pattern> <url-pattern>/order/*</url-pattern> <url-pattern>/site/*</url-pattern> 
+		<url-pattern>/staff/*</url-pattern> </filter-mapping> -->
 
 	<!-- 配置字符集 -->
 	<filter>
