@@ -44,6 +44,21 @@
   
    <!--nav right-->
  
+ <c:url value="/j_spring_security_logout" var="logoutUrl" />
+
+	<!-- csrt for log out-->
+	<form action="${logoutUrl}" method="post" id="logoutForm">
+	  <input type="hidden" 
+		name="${_csrf.parameterName}"
+		value="${_csrf.token}" />
+	</form>
+	
+	<script>
+		function formSubmit() {
+			document.getElementById("logoutForm").submit();
+		}
+	</script>
+ 
   <ul class="nav  navbar-nav navbar-right">
     <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" id="Menu-Hello_User"><span class="glyphicon glyphicon-user"></span> 您好, jordan&nbsp; <b class="caret"></b></a>
       <ul class="dropdown-menu">
@@ -53,7 +68,7 @@
                 <li><a id="Menu-Hello_User-Email_History" href="clientarea.php?action=emails">邮件存档</a></li>
         <li><a id="Menu-Hello_User-Change_Password" href="clientarea.php?action=changepw">修改密码</a></li>
         <li class="divider"></li>
-        <li><a id="Menu-Hello_User-Logout" href="logout.php">退出账户</a></li>
+        <li><a id="Menu-Hello_User-Logout" href="javascript:formSubmit()">退出账户</a></li>
       </ul>
     </li>
    </ul></div>

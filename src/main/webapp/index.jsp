@@ -88,7 +88,7 @@
                     <li class="page-scroll">
                         <a href="javascript:AddFavorite('http://${ctx}','善代SSOCKS5')" title="加入收藏">收藏本站</a>                </li>
                     <li class="page-scroll">
-                        <a href="${ctx}/bill/login">注册登录</a>                    </li>
+                        <a href="${ctx}/login">注册登录</a>                    </li>
                     <li class="page-scroll">
                         <a href="#tutorials">如何使用</a>                    </li>
                     <li class="page-scroll">

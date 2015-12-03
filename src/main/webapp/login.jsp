@@ -38,7 +38,7 @@
  
 
 <!--===== FLATHOST NAVIGATION ======-->
-<jsp:include page="./bill_header.jsp" />
+<jsp:include page="/bill/bill_header.jsp" />
 
 <!-- /navbar -->
 
@@ -52,7 +52,8 @@
     <div class="styled_title"><h1>客户登录</h1></div>
 </div>
 
-<form method="post" action="${ctx}/billing/dologin.php" class="form">
+<form name='loginForm'
+		  action="<c:url value='j_spring_security_check' />" method='POST'>
 <input type="hidden" name="token" value="1612bef9229f7636ad260f797550eb49b0ee7481">
 
 <div class="logincontainer">
@@ -66,12 +67,14 @@
                 <input class="form-control" name="password" id="password" type="password" placeholder="密码">
         </div>
 
+<input type="hidden" name="${_csrf.parameterName}"
+			value="${_csrf.token}" />
         <div class="form-group">
         <div class="checkbox"><label><input type="checkbox" name="rememberme"> 自动登录</label></div>
 
         <p> <input class="btn btn-block btn-success btn-lg" type="submit" value="登录"></p>
         <br>
-        <p> <a href="${ctx}/bill/register" class="btn btn-block btn-success btn-lg">注册</a></p>
+        <p> <a href="${ctx}/register" class="btn btn-block btn-success btn-lg">注册</a></p>
 
            </div>
            
@@ -95,5 +98,5 @@ $("#username").focus();
 </div>
  
 <!--===== Flathost  Footer =====-->
-<jsp:include page="./bill_footer.jsp" />
+<jsp:include page="/bill/bill_footer.jsp" />
 </body></html>

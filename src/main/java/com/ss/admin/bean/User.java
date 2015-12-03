@@ -1,5 +1,7 @@
 package com.ss.admin.bean;
 
+import java.util.Date;
+
 public class User {
 	
 	private String firstName;
@@ -9,6 +11,8 @@ public class User {
 	private String email;
 	
 	private String password;
+	
+	private Date createTime;
 	
 	public String getFirstName() {
 		return firstName;
@@ -40,6 +44,20 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	/**
+	 * @return the createTime
+	 */
+	public Date getCreateTime() {
+		return createTime;
+	}
+
+	/**
+	 * @param createTime the createTime to set
+	 */
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
 
 }

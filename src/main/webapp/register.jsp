@@ -41,7 +41,7 @@
  
 
 <!--===== FLATHOST NAVIGATION ======-->
-<jsp:include page="./bill_header.jsp" />
+<jsp:include page="/bill/bill_header.jsp" />
 <!--===== WHMCS NAVIGATION ======-->
 <!-- /navbar -->
 
@@ -171,7 +171,7 @@
  
 
 <!--===== Flathost  Footer =====-->
-<jsp:include page="./bill_footer.jsp" />
+<jsp:include page="/bill/bill_footer.jsp" />
 
 
 </body></html>

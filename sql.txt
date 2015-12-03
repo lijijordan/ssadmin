@@ -1,0 +1,29 @@
+
+-- create tables
+
+CREATE  TABLE users (
+  email VARCHAR(45) NOT NULL ,
+  first_name VARCHAR(45) NOT NULL ,
+  last_name VARCHAR(45) NOT NULL ,
+  create_time DATETIME NOT NULL,
+  password VARCHAR(45) NOT NULL ,
+  enabled TINYINT NOT NULL DEFAULT 1 ,
+  PRIMARY KEY (email));
+  
+  
+  CREATE TABLE user_roles (
+  user_role_id int(11) NOT NULL AUTO_INCREMENT,
+  email varchar(45) NOT NULL,
+  role varchar(45) NOT NULL,
+  PRIMARY KEY (user_role_id),
+  UNIQUE KEY uni_username_role (role,email),
+  KEY fk_username_idx (email),
+  CONSTRAINT fk_username FOREIGN KEY (email) REFERENCES users (email));
+  
+  
+ -- insert data
+INSERT INTO users(email,first_name,last_name,create_time,password,enabled)
+VALUES ('liji.jordan@gmail.com','liji','jordan',NOW(),'123456', true);
+
+INSERT INTO user_roles (email, role)
+VALUES ('liji.jordan@gmail.com', 'ROLE_USER');

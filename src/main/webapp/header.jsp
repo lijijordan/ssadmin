@@ -23,7 +23,7 @@
                     <li class="hidden active">
                         <a href="${ctx}/manual_android.html#page-top"></a>                    </li>
                     <li class="page-scroll">
-                        <a href="${ctx}/bill/login">注册登录</a>                    </li>
+                        <a href="${ctx}/login">注册登录</a>                    </li>
                     <li class="page-scroll">
                         <a href="${ctx}#tutorials">如何使用</a>                    </li>
                     <li class="page-scroll">

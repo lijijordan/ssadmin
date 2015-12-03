@@ -3,6 +3,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.ss.admin.util.ProductHelper;
+
 /**
  * 
  * @author lijib
@@ -55,18 +57,36 @@ public class IndexController extends BaseFormController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/bill/register")
+	@RequestMapping(value = "/register")
 	public ModelAndView register() {
-		ModelAndView mv = new ModelAndView("bill/register");
+		ModelAndView mv = new ModelAndView("register");
 		return mv;
 	}
 	
-	@RequestMapping(value = "/bill/login")
+	@RequestMapping(value = "/login")
 	public ModelAndView login() {
-		ModelAndView mv = new ModelAndView("bill/login");
+		ModelAndView mv = new ModelAndView("login");
 		return mv;
 	}
 	
+	@RequestMapping(value = "/bill/client")
+	public ModelAndView client() {
+		ModelAndView mv = new ModelAndView("bill/client");
+		return mv;
+	}
 	
+	@RequestMapping(value = "/bill/cart")
+	public ModelAndView cart() {
+		ModelAndView mv = new ModelAndView("bill/cart");
+		mv.addObject("products", ProductHelper.getProducts());
+		return mv;
+	}
+	
+	@RequestMapping(value = "/bill/config")
+	public ModelAndView config(int ID) {
+		ModelAndView mv = new ModelAndView("bill/config");
+		mv.addObject("product", ProductHelper.getProduct(ID));
+		return mv;
+	}
 	
 }
