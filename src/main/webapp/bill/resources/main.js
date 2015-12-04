@@ -40,19 +40,9 @@ function recalctotals() {
     });
 }
 
-function addtocart(gid) {
-    jQuery("#loading1").slideDown();
-    jQuery.post("cart.php", 'ajax=1&a=confproduct&'+jQuery("#orderfrm").serialize(),
-    function(data){
-        if (data) {
-            jQuery("#configproducterror").html(data);
-            jQuery("#configproducterror").slideDown();
-            jQuery("#loading1").slideUp();
-        } else {
-            if (gid) window.location='cart.php?gid='+gid;
-            else window.location='cart.php?a=confdomains';
-        }
-    });
+function addtocart(productID, ctx) {
+	var month = jQuery("#selectmonth").html();
+	window.location= ctx + '/order/create?productID=' + productID + '&month=' + month;
 }
 
 function domaincontactchange() {
@@ -76,19 +66,10 @@ function enterNewCC() {
     jQuery(".newccinfo").show();
 }
 
-function updateConfigurableOptions(i, billingCycle) {
-    jQuery.post(
-        "cart.php",
-        'a=cyclechange&ajax=1&i='+i+'&billingcycle='+billingCycle,
-        function(data){
-            if (data=='') {
-                window.location='cart.php?a=view';
-            } else {
-                jQuery("#prodconfigcontainer").html(data);
-                jQuery("#prodconfigcontainer").slideDown();
-            }
-        }
-    );
+function updateConfigurableOptions(price, billingCycle, month) {
+    var sum = price * billingCycle * month;
+    jQuery("#totalprice").html(sum);
+    jQuery("#selectmonth").html(month);
 }
 
 function catchEnter(e) {

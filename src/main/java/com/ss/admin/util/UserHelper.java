@@ -3,6 +3,9 @@ package com.ss.admin.util;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.ss.admin.bean.User;
 
 /**
@@ -32,4 +35,13 @@ public class UserHelper {
 	public static void main(String[] args) {
 		System.out.println(java.util.UUID.randomUUID().toString());
 	}
+	
+	/**
+	 * 获取当前用户email
+	 * @return
+	 */
+	public static String getCurrentUser(){
+		return SecurityContextHolder.getContext().getAuthentication().getName();
+	}
+	
 }

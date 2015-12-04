@@ -1,7 +1,9 @@
 package com.ss.admin.util;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.ss.admin.bean.Product;
 
@@ -9,7 +11,7 @@ import com.ss.admin.bean.Product;
 public class ProductHelper {
 	
 	private final static List<Product> PRODUCTLIST = new ArrayList<Product>();
-	
+	private final static Map<Integer, Float> MONTH_RATE = new HashMap<Integer, Float>();
 	// init products
 	static {
 		Product p1 = new Product();
@@ -65,6 +67,14 @@ public class ProductHelper {
 		p6.setPrice(1);
 		p6.setDescription("1G流量<br>7天测试时间<br>日本线路<br>测试线路不代表套餐速度，测试只是确定能连外网<br><h4>每人限购买一次</h4>（请用注册时间半年以上QQ邮箱注册，购买测试账号，否则我们保留取消该测试账号的权力）<br><br><br>（经测试，长城宽带、宽带通、鹏博士宽带等二级宽带商出国带宽极小，只有将宽带换成电信、联通和移动等一级运营商，才能获得理想的速度。校园网情况复杂，请先测试）<br>");
 		PRODUCTLIST.add(p6);
+		
+		// init month rate map
+		MONTH_RATE.put(1, 1.0f);
+		MONTH_RATE.put(3, 0.9f);
+		MONTH_RATE.put(6, 0.8f);
+		MONTH_RATE.put(12, 0.6f);
+		MONTH_RATE.put(24, 0.5f);
+		
 	}
 	
 	
@@ -86,6 +96,15 @@ public class ProductHelper {
 			}
 		}
 		return p;
+	}
+	
+	/**
+	 * 计算套餐价格
+	 * @return
+	 */
+	public static float sumMoney(int productID, int month){
+		Product p = getProduct(productID);
+		return p.getPrice() * month * MONTH_RATE.get(month);
 	}
 	
 }

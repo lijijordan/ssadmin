@@ -81,7 +81,7 @@ function removeItem(type,num) {
 function emptyCart(type,num) {
     var response = confirm("您确认清空购物车？");
     if (response) {
-        window.location = 'cart.php?a=empty';
+        window.location = '${ctx}/order/emptyPreOrder';
     }
 }
 </script>
@@ -110,69 +110,38 @@ window.langPasswordStrong = "安全（请您妥善保管您的密码）";
 									<th width="60%">描述</th>
 									<th width="40%">价格</th>
 								</tr>
-
-								<tr class="carttableproduct">
-									<td><strong><em>限时套餐</em> - 视频套餐</strong><br> &nbsp;»
-										流量(GB/月): 80GB/月<br>
-									<a
-										href="${ctx}/billing/cart.php?a=confproduct&i=0"
-										class="cartedit">[编辑配置]</a> <a
-										href="${ctx}/billing/#"
-										onclick="removeItem(&#39;p&#39;,&#39;0&#39;);return false"
-										class="cartremove">[移除]</a></td>
-									<td class="textcenter"><strong>￥30.00 元</strong></td>
-								</tr>
-								<tr class="carttableproduct">
-									<td><strong><em>限时套餐</em> - 日本特价线路</strong><br>
-										&nbsp;» 流量(GB/月): 15GB/月<br>
-									<a
-										href="${ctx}/billing/cart.php?a=confproduct&i=1"
-										class="cartedit">[编辑配置]</a> <a
-										href="${ctx}/billing/#"
-										onclick="removeItem(&#39;p&#39;,&#39;1&#39;);return false"
-										class="cartremove">[移除]</a></td>
-									<td class="textcenter"><strong>￥10.00 元</strong></td>
-								</tr>
-								<tr class="carttableproduct">
-									<td><strong><em>限时套餐</em> - 独立专线</strong><br> &nbsp;»
-										流量(GB/月): 80GB/月<br>
-									<a
-										href="${ctx}/billing/cart.php?a=confproduct&i=2"
-										class="cartedit">[编辑配置]</a> <a
-										href="${ctx}/billing/#"
-										onclick="removeItem(&#39;p&#39;,&#39;2&#39;);return false"
-										class="cartremove">[移除]</a></td>
-									<td class="textcenter"><strong>￥125.00 元</strong></td>
-								</tr>
-								<tr class="carttableproduct">
-									<td><strong><em>限时套餐</em> - 视频套餐</strong><br> &nbsp;»
-										流量(GB/月): 80GB/月<br>
-									<a
-										href="${ctx}/billing/cart.php?a=confproduct&i=3"
-										class="cartedit">[编辑配置]</a> <a
-										href="${ctx}/billing/#"
-										onclick="removeItem(&#39;p&#39;,&#39;3&#39;);return false"
-										class="cartremove">[移除]</a></td>
-									<td class="textcenter"><strong>￥150.00 元</strong></td>
-								</tr>
-
-
-
-
-
+								<c:set var="sum" value="0" scope="page" />
+								<c:forEach items="${orders}" var="item"> 
+									<c:set var="sum" value="${sum + item.money}" scope="page"/>
+									<tr class="carttableproduct">
+										<td><strong><em>限时套餐</em> -${item.product.name}</strong><br> &nbsp;»
+											流量(GB/月): ${item.product.flow}GB/月<br> 
+											<!-- <a
+											href="${ctx}/billing/cart.php?a=confproduct&i=0"
+											class="cartedit">[编辑配置]</a>  -->
+											<a href="${ctx}/order/remove?orderID=${item.ID}" class="cartedit">[移除]</a>
+										</td>
+										<td class="textcenter"><strong>￥${item.money} 元</strong></td>
+									</tr>
+								</c:forEach>
+								
+								<!-- 
 								<tr class="subtotal">
 									<td class="textright">小计: &nbsp;</td>
-									<td class="textcenter">￥315.00 元</td>
-								</tr>
+									<td class="textcenter">￥${sum} 元</td>
+								</tr> -->
+								 
 								<tr class="total">
 									<td class="textright">当前总计: &nbsp;</td>
-									<td class="textcenter">￥315.00 元</td>
+									<td class="textcenter"><fmt:formatNumber value="${sum}" type="currency"/>元</td>
 								</tr>
+								<!-- 
 								<tr class="recurring">
 									<td class="textright">下次付款总计: &nbsp;</td>
 									<td class="textcenter">￥40.00 元 月付<br>￥125.00 元 季度<br>￥150.00
 										元 半年<br></td>
 								</tr>
+								 -->
 							</tbody>
 						</table>
 
@@ -180,9 +149,10 @@ window.langPasswordStrong = "安全（请您妥善保管您的密码）";
 
 					<div class="cartbuttons">
 						<input type="button" class="btn btn-danger" value="清空购物车"
-							onclick="emptyCart();return false"> <input type="button"
+							onclick="emptyCart();return false"> 
+							<input type="button"
 							class="btn btn-success" value="继续购物"
-							onclick="window.location=&#39;cart.php&#39;">
+							onclick="window.location='${ctx}/bill/cart'">
 					</div>
 					<div class="clear"></div>
 					<div class="clear"></div>

@@ -77,7 +77,7 @@
 					<c:forEach items="${products}" var="item"> 
 						<div class="products">
 						<div class="product" id="${item.ID}"
-							onclick="window.location=&#39;cart.php?a=add&amp;pid=6&#39;">
+							onclick="window.location='${ctx}/bill/config?ID=${item.ID}'">
 							<div class="pricing">
 								起价<br> <span class="pricing">￥${item.price} 元</span><br>
 							</div>
@@ -90,9 +90,9 @@
 								<br>
 							</div>
 
-							<form method="post" action="${ctx}/billing/cart.php?a=add&pid=6">
-								<input type="hidden" name="token"
-									value="5ffe9cc80bc178bd1c61dd8e4a7f0409fba532a6">
+							<form method="GET" action="${ctx}/bill/config">
+								<input type="hidden" name="ID"
+									value="${item.ID}">
 								<div class="btn btn-lg btn-successbox">
 									<input type="submit" value="现在订购 »"
 										class="btn btn-lg btn-success">

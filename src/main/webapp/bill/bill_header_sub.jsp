@@ -17,7 +17,7 @@
       <ul class="dropdown-menu">
         <li><a id="Menu-Services-My_Services" href="clientarea.php?action=products">我的服务</a></li>
                 <li class="divider"></li>
-        <li><a id="Menu-Services-Order_New_Services" href="cart.php">购买新服务</a></li>
+        <li><a id="Menu-Services-Order_New_Services" href="${ctx }/bill/cart">购买新服务</a></li>
         <li><a id="Menu-Services-View_Available_Addons" href="cart.php?gid=addons">查看可用的附加服务</a></li>
       </ul>
     </li>

@@ -1,7 +1,8 @@
 
 -- create tables
 
-CREATE  TABLE users (
+	
+  CREATE  TABLE users (
   email VARCHAR(45) NOT NULL ,
   first_name VARCHAR(45) NOT NULL ,
   last_name VARCHAR(45) NOT NULL ,
@@ -19,6 +20,19 @@ CREATE  TABLE users (
   UNIQUE KEY uni_username_role (role,email),
   KEY fk_username_idx (email),
   CONSTRAINT fk_username FOREIGN KEY (email) REFERENCES users (email));
+  
+  -- 订单
+  CREATE TABLE t_order (
+  order_id int(11) NOT NULL AUTO_INCREMENT,
+  product_id int(11) NOT NULL,
+  month_buy int(4) NOT NULL,
+  money float(10,2) NOT NULL,
+  email varchar(45) NOT NULL,
+  create_time DATETIME NOT NULL,
+  charge_time DATETIME ,
+  state int(2) NOT NULL DEFAULT 0,
+  PRIMARY KEY (order_id));
+  
   
   
  -- insert data

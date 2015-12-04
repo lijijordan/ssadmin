@@ -65,7 +65,7 @@
 <input type="hidden" name="configure" value="true">
 <input type="hidden" name="i" value="0">
 
-<h1>配置</h1>
+<h1>配置选择</h1>
 <div id="configproducterror" class="errorbox"></div>
 
 <div class="prodconfigcol1">
@@ -192,7 +192,7 @@
 							</div>
 
 							<div class="checkoutbuttons">
-<input type="button" value="结账 »" class="btn btn-lg btn-success" onclick="addtocart();"><br>
+<input type="button" value="结账 »" class="btn btn-lg btn-success" onclick="addtocart(${product.ID}, '${ctx }')"><br>
 </div>
 <!--
 <input type="button" value="继续购物" class="btn btn-lg btn-success" onclick="addtocart(&#39;1&#39;);"><br>
